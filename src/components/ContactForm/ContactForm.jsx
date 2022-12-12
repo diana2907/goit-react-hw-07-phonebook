@@ -3,9 +3,13 @@ import css from 'components/ContactForm/ContactForm.module.css';
 export const ContactForm = ({ onSubmit }) => {
   const handleSubmit = evt => {
     evt.preventDefault();
-    onSubmit(evt.target.elements.name.value, evt.target.elements.number.value);
-    evt.target.elements.name.value = '';
-    evt.target.elements.number.value = '';
+
+    const name = evt.target.elements.name;
+    const number = evt.target.elements.number;
+
+    onSubmit(name.value, number.value);
+    name.value = '';
+    number.value = '';
   };
 
   return (
