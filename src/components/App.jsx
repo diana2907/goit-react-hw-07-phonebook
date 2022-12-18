@@ -6,7 +6,11 @@ import { useState, useEffect } from 'react';
 
 export function App() {
   const [contacts, setContacts] = useState(() => {
-    return JSON.parse(window.localStorage.getItem('contacts') ?? '');
+    const savedContacts = window.localStorage.getItem('contacts');
+    if (savedContacts !== null) {
+      return JSON.parse(savedContacts);
+    }
+    return [];
   });
 
   const [filter, setFilter] = useState('');
